@@ -9,6 +9,9 @@ html {
 }
 
 .page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -37,7 +40,6 @@ ol {
   list-style: none;
 }
 
-/* Кастомный скроллбар */
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
@@ -47,20 +49,7 @@ ol {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
-}
-
-.page {
-  inline-size: 1200px;
-  block-size: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
+  background-color: #d9d9d9;
 }
 
 .content {
@@ -74,37 +63,10 @@ ol {
   inline-size: 711px;
 }
 
-.search-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 16px;
-}
-
-.content__details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-  block-size: 100%;
-}
-
-.content__list-container {
-  block-size: 298px;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.content__list-container.custom-scrollbar {
-  overflow: auto;
-}
-
 .result__video-container {
+  position: relative;
   inline-size: 711px;
   block-size: 386px;
-  margin-bottom: 16px;
 }
 
 .result__video {
@@ -113,30 +75,18 @@ ol {
   object-fit: cover;
 }
 
-.content__list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
+/* не понимаю, как опустить фильтры, чтобы было как в макете. спасибо за помощь */
 
-.content__video-card {
+
+.search-form {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
+  margin-top: 2px;
 }
 
-.content__video-card-thumbnail {
-  inline-size: 194px;
-  min-inline-size: 194px;
-  block-size: 103px;
-  flex-shrink: 0;
-  object-fit: cover;
-  object-position: center;
-}
-
-.content__video-card-description-container {
-  width: 200px;
-  overflow: hidden;
+.search-form__fieldset {
+  border: none;
 }
 
 .search-form__fieldset-title {
@@ -144,58 +94,6 @@ ol {
   font-size: 18px;
   font-weight: 400;
   line-height: 100%;
-}
-
-.title {
-  font-family: Oswald, sans-serif;
-  font-size: 75px;
-  font-weight: 700;
-  line-height: 94%;
-  text-transform: uppercase;
-}
-
-.content__accent {
-  color: #545050;
-}
-
-.content__card-link {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-}
-
-.content__video-card-title {
-  font-family: Oswald, sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 100%;
-  text-transform: uppercase;
-  display: block;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.content__video-card-description {
-  line-height: 100%;
-  display: flex;
-  line-clamp: 4;
-  overflow: hidden;
-}
-
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.search-form__fieldset {
-  border: none;
 }
 
 .search-form__checkbox-list {
@@ -206,47 +104,52 @@ ol {
 .search-form__label {
   display: flex;
   align-items: center;
-  width: fit-content;
   gap: 6px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__label:has(focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
 
 .search-form__textfield {
   appearance: none;
   inline-size: 225px;
   block-size: 27px;
-  background-color: transparent;
   border: none;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
   color: #fff;
   font-family: inherit;
   font-size: 18px;
+  background-color: transparent;
   outline: none;
 }
 
 .search-form__textfield::placeholder {
-  color: rgb(255 255 255 / 0.7);
-}
-
-.search-form__label:has(.search-form__textfield:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
+  color: rgb(255 255 255 / 70%);
 }
 
 .search-form__pseudo-checkbox {
+  display: flex;
   inline-size: 20px;
   block-size: 20px;
-  border: 1px solid #fff;
   padding: 1px;
-  display: flex;
+  border: 1px solid #fff;
 }
 
 .search-form__pseudo-checkbox::after {
-  content: "";
+  content: '';
   display: block;
-  background-color: #fff;
   inline-size: 100%;
   block-size: 100%;
+  background-color: #fff;
   opacity: 0;
 }
 
@@ -254,57 +157,45 @@ ol {
   opacity: 1;
 }
 
-.search-form__label:hover .search-form__label-text {
-  text-decoration: underline;
-}
-
-.search-form__label:has(.search-form__checkbox:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
-}
-
-/* общий стиль кнопок */
-.button {
-  background-color: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 100%;
-  cursor: pointer;
-}
-
-/* hover / active / focus */
-.button:hover {
-  text-decoration: underline;
-  background-color: #545050;
-}
-
-.button:active {
-  color: rgb(255 255 255 / 0.6);
-}
-
-.button:focus {
-  outline: none;
-}
-
-.button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
-}
-
-/* кнопка "Найти" */
 .search-form__submit-button {
-  inline-size: 194px;
-  block-size: 34px;
   align-self: flex-end;
+  inline-size: 194px;
+  min-block-size: 34px;
 }
 
-/* кнопка "Показать ещё" */
-.more-button {
-  inline-size: 390px;
-  block-size: 34px;
-  align-self: flex-end;
+.content__details {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  block-size: 100%;
+}
+
+.content__list-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  block-size: 298px;
+  overflow: auto;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 26px;
+  gap: 30px;
+}
+
+.content__list-item {
+  padding-inline: 3px;
+}
+
+.content__card-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .content__card-link_current {
@@ -328,18 +219,101 @@ ol {
   outline-offset: 2px;
 }
 
-.content__list-item {
-  padding-inline: 3px;
+.content__video-card {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
 }
 
-.button,
-.search-form__label,
-.content__card-link,
-.more-button {
+.content__video-card-thumbnail {
+  flex-shrink: 0;
+  inline-size: 194px;
+  min-inline-size: 194px;
+  block-size: 103px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__video-card-description-container {
+  width: 200px;
+  overflow: hidden;
+}
+
+.content__video-card-title {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  font-family: Oswald, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 100%;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* я не понимаю, как сделать переполнение, не работает с line-clamp, у меня это не получилось и в первую итерацию */
+.content__video-card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 20px;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.title {
+  font-family: Oswald, sans-serif;
+  font-size: 75px;
+  font-weight: 700;
+  line-height: 94%;
+  text-transform: uppercase;
+}
+
+.button {
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 100%;
+  background-color: transparent;
   cursor: pointer;
 }
 
-.result__video-container,
-.content__list-container {
-  position: relative;
+.button:hover {
+  background-color: #545050;
+  text-decoration: underline;
+}
+
+.button:active {
+  color: #545050;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.more-button {
+  min-block-size: 34px;
+  inline-size: 390px;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
