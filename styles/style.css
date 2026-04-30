@@ -67,6 +67,7 @@ ol {
   position: relative;
   inline-size: 711px;
   block-size: 386px;
+  margin-bottom: 26px;
 }
 
 .result__video {
@@ -75,14 +76,10 @@ ol {
   object-fit: cover;
 }
 
-/* не понимаю, как опустить фильтры, чтобы было как в макете. спасибо за помощь */
-
-
 .search-form {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 2px;
 }
 
 .search-form__fieldset {
@@ -113,7 +110,7 @@ ol {
   text-decoration: underline;
 }
 
-.search-form__label:has(focus-visible) {
+.search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
   outline-offset: 2px;
 }
@@ -160,7 +157,6 @@ ol {
 .search-form__submit-button {
   align-self: flex-end;
   inline-size: 194px;
-  min-block-size: 34px;
 }
 
 .content__details {
@@ -183,7 +179,7 @@ ol {
 .content__list {
   display: flex;
   flex-direction: column;
-  padding-top: 26px;
+  /*padding-top: 26px;*/
   gap: 30px;
 }
 
@@ -250,15 +246,15 @@ ol {
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+  margin-bottom: 6px;
 }
 
-/* я не понимаю, как сделать переполнение, не работает с line-clamp, у меня это не получилось и в первую итерацию */
 .content__video-card-description {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 20px;
+  line-height: 16.2px;
 }
 
 .content__accent {
@@ -266,6 +262,8 @@ ol {
 }
 
 .title {
+  margin-top: 16px;
+  padding-bottom: 26px;
   font-family: Oswald, sans-serif;
   font-size: 75px;
   font-weight: 700;
@@ -282,15 +280,15 @@ ol {
   line-height: 100%;
   background-color: transparent;
   cursor: pointer;
+  min-block-size: 34px;
 }
 
 .button:hover {
-  background-color: #545050;
   text-decoration: underline;
 }
 
 .button:active {
-  color: #545050;
+  background-color: #545050;
 }
 
 .button:focus {
@@ -303,7 +301,6 @@ ol {
 }
 
 .more-button {
-  min-block-size: 34px;
   inline-size: 390px;
   cursor: pointer;
 }
